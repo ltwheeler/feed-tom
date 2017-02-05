@@ -49,8 +49,6 @@ export class StateService {
 				let currentUser = action.currentUser;
 
 				state.restaurants = [];
-				state.popularRestaunts = [];
-
 
 				// Restaurants list
 				// restaurant.id
@@ -92,11 +90,22 @@ export class StateService {
 					}
 
 					// Add restaurant to state
-					state.restaurants.push(newRestaurant)
+					state.restaurants.push(newRestaurant);
 				}
 
+					// Alphabetize by restaurant name
+					state.restaurants = state.restaurants.sort( function(r1,r2) {
+						if (r1.name >= r2.name) {
+							return 1;
+						} else {
+							return -1;
+						}
+					});
+
+					// TODO: And popular restaurant calculations seemed to be affecting
 				// Popular restaurants
-				state.popularRestaurants = this.selectMostPopularRestaurants(state.restaurants, 5);
+				state.popularRestaurants = Object.assign([], state.restaurants);
+				state.popularRestaurants = this.selectMostPopularRestaurants(state.popularRestaurants, 5);
 
 				return state;
 			default:
@@ -146,6 +155,17 @@ export class StateService {
 	}
 
 	selectMostPopularRestaurants(restaurants, numberToSelect) {
-		return null;
+		var sorted = restaurants.sort((r1,r2) => r2.numberOfPreferences - r1.numberOfPreferences);
+		var sliced = sorted.slice(0, numberToSelect-1);
+		var mostPopular = [];
+		// Prune restaurants with zero preferences
+		for (let restaurant of sliced) {
+			if (restaurant.numberOfPreferences > 0) {
+				mostPopular.push(restaurant);
+			}
+		}
+
+
+		return mostPopular;
 	}
 }

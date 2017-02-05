@@ -19,6 +19,7 @@
 	</app-landing>
 	<app-main *ngIf="displayPage == 'main' && isIdentitySet() == true"
 						[preferences]="preferences"
+						[popularRestaurants]="popularRestaurants"
 						[restaurants]="restaurants"
 						[tomCode]="tomCode"
 						[userName]="userName">

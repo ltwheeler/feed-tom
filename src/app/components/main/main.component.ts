@@ -17,6 +17,8 @@ export class MainComponent {
 	@Input()
 	restaurants: Restaurant[];
 	@Input()
+	popularRestaurants: Restaurant[];
+	@Input()
 	userName:string;
 	@Input()
 	tomCode:string;
@@ -41,6 +43,7 @@ export class MainComponent {
 
 	getRestaurantDescription(restaurantId:string) {
 		for (let restaurant of this.restaurants) {
+			debugger;
 			if (restaurant.id == restaurantId) {
 				return restaurant.name;
 			}

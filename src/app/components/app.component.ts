@@ -16,6 +16,8 @@ import { Component, Output, OnInit, NgZone } from '@angular/core';
 export class AppComponent {
 	preferences: Preference[] = new Array<Preference>();
 	restaurants: Restaurant[] = new Array<Restaurant>();
+	popularRestaurants: Restaurant[] = new Array<Restaurant>();
+
 	displayPage:string = "main";
 	state:any;
 
@@ -37,6 +39,7 @@ export class AppComponent {
 			this.zone.run(() => {
 				this.state = state.state;
 				this.restaurants = state.state.restaurants;
+				this.popularRestaurants = state.state.popularRestaurants;
 				this.preferences = state.preferences;
 				this.userName = state.userName;
 				this.tomCode = state.tomCode;
