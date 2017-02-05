@@ -51,6 +51,7 @@ export class ActionCreators {
 
 				this.stateService.reduce(action);
 
+				// Exiting since valid tomCode was not found
 				return;
 			} else {
 				// [3] Use the localStorage tomCode
@@ -65,6 +66,7 @@ export class ActionCreators {
 		if (userName == null || userName.length == 0) {
 			var localUserName = this.currentUser.getUserName();
 			if (localUserName == null || localUserName.length == 0) {
+				// Both username sources had nothing, default to "anonymous"
 				userName = "anonymous";
 				this.localStorage.write("userName", userName);
 			} else {
@@ -72,19 +74,15 @@ export class ActionCreators {
 			}
 		}
 
-		console.log("connecting to firebase with: ");
-		console.log("userName: " + userName);
-		console.log("tomCode: " + tomCode);
-
-		this.getPreferences(tomCode);
+		this.getPreferences(tomCode, userName);
 	}
 
-	getPreferences(tomCode:string) {
+	getPreferences(tomCode:string, currentUser:string) {
 		if (tomCode == null || tomCode.length == 0) {
 			return;
 		}
 
-		this.services.getPreferences(tomCode);
+		this.services.getPreferences(tomCode, currentUser);
 	};
 
 	// Figures out whether we or adding or removing a preference

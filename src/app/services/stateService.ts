@@ -23,6 +23,7 @@ export class StateService {
 	preferenceReducers(action:any, preferences:Preference[]) {
 		switch(action.type) {
 			case "PROCESS_DATA":
+
 				preferences = action.payload.preferences;
 				return preferences;
 			default:
@@ -43,10 +44,59 @@ export class StateService {
 	stateReducers(action:any, state) {
 		switch(action.type) {
 			case "PROCESS_DATA":
-			//	var restaurants = action.payload.restaurants;
+				let rawPreferences = action.payload.preferences;
+				let rawRestaurants = action.payload.restaurants;
+				let currentUser = action.currentUser;
+
+				state.restaurants = [];
+				state.popularRestaunts = [];
 
 
+				// Restaurants list
+				// restaurant.id
+				// restaurant.name
+				// restaurant.isUserPreference
+				// restaurant.userPreferenceId
+				// restaurant.isOthersPreference
+				// restaurant.numberOfPreferences
+				for (let rawRestaurant of rawRestaurants) {
+					let newRestaurant:any = {};
 
+					newRestaurant.id = rawRestaurant.id;
+					newRestaurant.name = rawRestaurant.name;
+					newRestaurant.isUserPreference = false;
+					newRestaurant.userPreferenceId = null;
+					newRestaurant.isOthersPreference = false;
+					newRestaurant.numberOfPreferences = 0;
+
+					// Was this restaurant preferred by current user, others, or both?
+					for (let preferenceId of rawRestaurant.preferenceIds) {
+						let preference:any = null;
+
+						// Find preference that matches the restaurant.preferenceIds
+						for (let rawPreference of rawPreferences) {
+							if (rawPreference.id == preferenceId) {
+								preference = rawPreference;
+							}
+						}
+
+						// Who belongs to this preference?
+						if (preference.userName == currentUser) {
+							newRestaurant.isUserPreference = true;
+							newRestaurant.userPreferenceId = preference.id;
+						} else {
+							newRestaurant.isOthersPreference = true;
+						}
+
+						newRestaurant.numberOfPreferences++;
+					}
+
+					// Add restaurant to state
+					state.restaurants.push(newRestaurant)
+				}
+
+				// Popular restaurants
+				state.popularRestaurants = this.selectMostPopularRestaurants(state.restaurants, 5);
 
 				return state;
 			default:
@@ -59,10 +109,13 @@ export class StateService {
 		// TODO: Rearchitect to a typed state so this is not necessary
 		let newState:any = {};
 
+		newState.state = this.stateReducers(action, this.state);
+
 		newState.preferences = this.preferenceReducers(action, this.state.preferences);
 		newState.restaurants = this.restaurantReducers(action, this.state.restaurants);
-
 		this.state = {};
+		this.state.state = newState.state;
+
 		this.state.preferences = newState.preferences;
 		this.state.restaurants = newState.restaurants;
 		this.state.userName = this.currentUser.getUserName();
@@ -90,5 +143,9 @@ export class StateService {
 	
 	purgeData() {
 		this.stateSource.next(null);
+	}
+
+	selectMostPopularRestaurants(restaurants, numberToSelect) {
+		return null;
 	}
 }

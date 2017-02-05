@@ -10,12 +10,12 @@
 				</button>
 			</div>
 			<!-- LOOP over preferences -->
-			<div *ngFor="let preference of preferences" class="preference-square">
+			<div *ngFor="let restaurant of restaurants" class="preference-square">
 				<div>
-					{{ getRestaurantDescription(preference.restaurantId) }}
+					{{ restaurant.name }}
 				</div>
 				<div class="slab-serif" style="font-size: 1rem; color: red; font-weight: 800;">
-					{{ preference.userName }}
+					{{ restaurant.numberOfPreferences }}
 				</div>
 			</div>
 		</div>
@@ -26,7 +26,8 @@
 			<!-- LOOP over restaurants -->
 			<div *ngFor="let restaurant of restaurants"
 						(click)="togglePreference(restaurant)"
-						[class.liked]="restaurant.preferenceIds.length > 0"
+						[class.liked-by-me]="restaurant.isUserPreference"
+						[class.liked-by-others]="restaurant.isOthersPreference && restaurant.isUserPreference == false"
 						class="restaurant-square">
 				<div style="font-size: 1rem;">
 					{{ restaurant.name }}

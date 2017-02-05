@@ -35,8 +35,8 @@ export class AppComponent {
 		// Set up subscription to data
 		this.stateService.state$.subscribe(state => {
 			this.zone.run(() => {
-				this.state = state;
-				this.restaurants = state.restaurants;
+				this.state = state.state;
+				this.restaurants = state.state.restaurants;
 				this.preferences = state.preferences;
 				this.userName = state.userName;
 				this.tomCode = state.tomCode;
@@ -62,6 +62,6 @@ export class AppComponent {
 	};
 
 	getPreferences(tomCode:string) {
-		this.actionCreators.getPreferences(tomCode);
+		this.actionCreators.getPreferences(tomCode, this.userName);
 	};
 }

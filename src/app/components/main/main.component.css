@@ -26,9 +26,15 @@
 	justify-content: space-around;
 }
 
-.restaurant-square.liked {
+.restaurant-square.liked-by-me {
 	color: white;
 	background-image: url(/assets/images/preference.png);
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.restaurant-square.liked-by-others {
+	background-image: url(/assets/images/preference-star.png);
 	background-size: cover;
 	background-position: 50% 50%;
 }

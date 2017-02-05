@@ -34,7 +34,8 @@ export class Services {
 
 		// Create preference
 		var preferenceId = newPreferenceRef.key;
-		let preference:Preference = {id: preferenceId, restaurantId: restaurantId, userName: userName, createdOn: null}
+
+		let preference:Preference = new Preference ({id: preferenceId, restaurantId: restaurantId, userName: userName, createdOn: null});
 
 		newPreferenceRef.set(preference);
 
@@ -51,7 +52,7 @@ export class Services {
 		database().ref(tomCode + "/preferences/" + preferenceId).remove();
 	};
 
-	getPreferences(tomCode:string) {
+	getPreferences(tomCode:string, currentUser:string) {
 		console.log("get preferences");
 
 		var self = this;
@@ -96,14 +97,15 @@ export class Services {
 			payload.restaurants = restaurants;
 			payload.preferences = preferences;
 
-			self.processData(payload);
+			self.processData(payload, currentUser);
 		});
 	};
 
-	processData(payload:any) {
+	processData(payload:any, currentUser:string) {
 		let action = {
 			type: "PROCESS_DATA",
-			payload: payload
+			payload: payload,
+			currentUser: currentUser
 		};
 
 		this.stateService.reduce(action);
