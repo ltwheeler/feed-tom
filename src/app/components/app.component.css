@@ -33,6 +33,7 @@
 }
 
 .header-config {
+	width: 100%;
 	padding-right: 5%;
 }
 
@@ -88,7 +89,7 @@
 		width: 375px;
 	}
 
-	.header-text {
+	.header-text-container {
 		display: none;
 	}
 }
@@ -106,7 +107,7 @@
 		width: 414px;
 	}
 
-	.header-text {
+	.header-text-container {
 		display: none;
 	}
 }

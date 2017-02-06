@@ -3,6 +3,7 @@ body {
 	margin: 0px;
 	font-family: 'Nunito', sans-serif;
 	font-weight: bold;
+	display: fixed;
 }
 
 .gray {

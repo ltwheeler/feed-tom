@@ -21,9 +21,12 @@
 
 	<div class="header-config-container">
 		<div class="header-config">
-			<div class="glyphicon glyphicon-cog">
+			<div *ngIf="tomCode && tomCode.length > 0">
+				Room: {{ tomCode }}
 			</div>
-			{{ userName }} | <button class="btn btn-gray" (click)="setDisplayPage('landing')">Update</button>
+			<div>
+				<button class="btn btn-gray" (click)="setDisplayPage('landing')">Update</button>
+			</div>
 		</div>
 	</div>
 </div>
