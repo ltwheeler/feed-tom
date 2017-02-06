@@ -8,4 +8,4 @@ An application that allows groups of people to vote for 'where they should eat' 
 ##Start local server
 npm start
 
-##Design by Kathreen Fontecha
+##Graphic Design work done by Kathreen Fontecha
