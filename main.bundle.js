@@ -556,6 +556,7 @@ var LandingComponent = (function () {
     LandingComponent.prototype.ngOnInit = function () {
     };
     LandingComponent.prototype.setIdentity = function () {
+        alert("Thanks for the click");
         this.actionCreators.setIdentity(this.userName, this.tomCode);
     };
     __decorate([
@@ -811,7 +812,7 @@ module.exports = "<!-- HEADER -->\n<div class=\"header-container\">\n\n\t<div cl
 /***/ 622:
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"landing-page-container\">\n\t<div class=\"login-form\">\n\t\t<div style=\"width: 50%;\">\n\t\t\tDisplay Name\n\t\t</div>\n\t\t<div>\n\t\t\t<input class=\"username-input\" [(ngModel)]=\"userName\">\n\t\t</div>\n\n\t\t<div style=\"padding-top: 30px;\">\n\t\t\tTom Code (You and your friends should all use the same tom code to pick restaurants together)\n\t\t</div>\n\t\t<input class=\"tomcode-input\"[(ngModel)]=\"tomCode\">\n\t\t<button class=\"btn btn-green\" (click)=\"setIdentity()\">Submit</button>\n\t</div>\n</div>"
+module.exports = "<div class=\"landing-page-container\">\n\t<div class=\"login-form\">\n\t\t<div>\n\t\t\t<a href=\"#\" onClick=\"alert('Thanks for the click')\">Click me</a>\n\t\t</div>\n\t\t<div style=\"width: 50%;\">\n\t\t\tDisplay Name\n\t\t</div>\n\t\t<div>\n\t\t\t<input class=\"username-input\" [(ngModel)]=\"userName\">\n\t\t</div>\n\n\t\t<div style=\"padding-top: 30px;\">\n\t\t\tTom Code (You and your friends should all use the same tom code to pick restaurants together)\n\t\t</div>\n\t\t<input class=\"tomcode-input\"[(ngModel)]=\"tomCode\">\n\t\t<button class=\"btn btn-green\" (click)=\"setIdentity()\">Submit</button>\n\t</div>\n</div>"
 
 /***/ },
 
