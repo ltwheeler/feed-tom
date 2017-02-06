@@ -12,3 +12,8 @@
 	flex-flow: column;
 	align-items: center;
 }
+
+.username-input,
+.tomcode-input {
+	border: 1px solid black;
+}

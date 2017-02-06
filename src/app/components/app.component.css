@@ -17,7 +17,7 @@
 .header-text-container {
 	align-items: center;
 	display: flex;
-	flex: 1 0 auto;
+	flex: 3 0 0px;
 	color: white;
 	letter-spacing: .1rem;
 	font-size: 1rem;
@@ -28,8 +28,12 @@
 	align-items: center;
 	display: flex;
 	justify-content: flex-end;
-	flex: 1 0 auto;
+	flex: 1 0 0px;
 	color: white;
+}
+
+.header-config {
+	padding-right: 5%;
 }
 
 .header-title {
@@ -49,12 +53,12 @@
 
 .potato {
 	max-width:100%;
-	max-height:100%;
+	max-height:50%;
 }
 
 .header-name {
 	width: 100%;
-	padding-left: 5%;
+	padding-left: 2%;
 	color: white;
 	letter-spacing: .1rem;
 	font-size: 1.4rem;
@@ -75,20 +79,16 @@
 @media all and (device-width: 375px) and (device-height: 667px) {
 	/* Should be 14% of 667 to match 14vh from desktop */
 	.header-container {
-		padding: 10px;
 		height: 97px;
 		width: 375px;
 	}
+
 	.body-container {
 		height: 570px;
 		width: 375px;
 	}
 
-	.sub-header {
-		color: white;
-		letter-spacing: .1rem;
-		font-size: .7rem;
-		font-weight: 400;
-		padding: 5px;
+	.header-text {
+		display: none;
 	}
 }

@@ -4,13 +4,13 @@
 			Display Name
 		</div>
 		<div>
-			<input [(ngModel)]="userName">
+			<input class="username-input" [(ngModel)]="userName">
 		</div>
 
 		<div style="padding-top: 30px;">
 			Tom Code (You and your friends should all use the same tom code to pick restaurants together)
 		</div>
-		<input [(ngModel)]="tomCode">
+		<input class="tomcode-input"[(ngModel)]="tomCode">
 		<button class="btn btn-green" (click)="setIdentity()">Submit</button>
 	</div>
 </div>
