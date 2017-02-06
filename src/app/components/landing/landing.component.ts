@@ -21,7 +21,6 @@ export class LandingComponent implements OnInit {
 	}
 
 	setIdentity() {
-		alert("Thanks for the click");
 		this.actionCreators.setIdentity(this.userName, this.tomCode);
 	}
 }

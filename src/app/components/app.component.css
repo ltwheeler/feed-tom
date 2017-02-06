@@ -8,7 +8,7 @@
 
 .header-title-container {
 	justify-content: flex-start;
-	flex: 3 0 auto;
+	flex: 3 0 0px;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -45,7 +45,6 @@
 
 .header-logo {
 	padding-left: 5%;
-	flex: 0 0 auto;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -78,6 +77,7 @@
 /* Mobile tweaks */
 @media all and (device-width: 375px) and (device-height: 667px) {
 	/* Should be 14% of 667 to match 14vh from desktop */
+
 	.header-container {
 		height: 97px;
 		width: 375px;
@@ -86,6 +86,24 @@
 	.body-container {
 		height: 570px;
 		width: 375px;
+	}
+
+	.header-text {
+		display: none;
+	}
+}
+
+@media all and (device-width: 414px) and (device-height: 736px) {
+	/* Should be 14% of 736 to match 14vh from desktop */
+
+	.header-container {
+		height: 100px;
+		width: 414px;
+	}
+
+	.body-container {
+		height: 636px;
+		width: 414px;
 	}
 
 	.header-text {
