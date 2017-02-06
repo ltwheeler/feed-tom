@@ -1,8 +1,16 @@
 <div class="landing-page-container">
-	
-	Enter User Name: <input [(ngModel)]="userName">
-	<br />
-	Enter Tom Code: <input [(ngModel)]="tomCode">
-	<br />
-	<button (click)="setIdentity()">Get Preferences</button>
+	<div class="login-form">
+		<div style="width: 50%;">
+			Display Name
+		</div>
+		<div>
+			<input [(ngModel)]="userName">
+		</div>
+
+		<div style="padding-top: 30px;">
+			Tom Code (You and your friends should all use the same tom code to pick restaurants together)
+		</div>
+		<input [(ngModel)]="tomCode">
+		<button class="btn btn-green" (click)="setIdentity()">Submit</button>
+	</div>
 </div>

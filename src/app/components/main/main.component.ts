@@ -19,9 +19,13 @@ export class MainComponent {
 	@Input()
 	popularRestaurants: Restaurant[];
 	@Input()
-	userName:string;
+	userName: string;
 	@Input()
-	tomCode:string;
+	tomCode: string;
+	@Input()
+	userCount: number;
+
+	newRestaurantName: string;
 
 	constructor(
 		private actionCreators: ActionCreators,
@@ -41,16 +45,6 @@ export class MainComponent {
 		this.actionCreators.purgePreferences(this.restaurants, this.preferences, this.tomCode);
 	};
 
-	getRestaurantDescription(restaurantId:string) {
-		for (let restaurant of this.restaurants) {
-			debugger;
-			if (restaurant.id == restaurantId) {
-				return restaurant.name;
-			}
-		}
-		return "restaurantId: " + restaurantId + " not found";
-	};
-
 	getPreferenceUserName(preferenceId:string) {
 		for (let preference of this.preferences) {
 			if (preference.id == preferenceId) {
@@ -59,4 +53,9 @@ export class MainComponent {
 		}
 		return "preferenceId: " + preferenceId + " not found";
 	};
+
+	addRestaurant() {
+		this.actionCreators.addRestaurant(this.tomCode, this.newRestaurantName);
+		this.newRestaurantName = "";
+	}
 }

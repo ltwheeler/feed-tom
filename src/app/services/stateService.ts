@@ -50,6 +50,9 @@ export class StateService {
 
 				state.restaurants = [];
 
+				state.userCount = 0;
+				let uniqueUserNames = [];
+
 				// Restaurants list
 				// restaurant.id
 				// restaurant.name
@@ -76,6 +79,12 @@ export class StateService {
 							if (rawPreference.id == preferenceId) {
 								preference = rawPreference;
 							}
+						}
+
+						// Add preference to uniquePreference Counter
+						if (uniqueUserNames.indexOf(preference.userName) == -1) {
+							uniqueUserNames.push(preference.userName);
+							state.userCount++;
 						}
 
 						// Who belongs to this preference?
@@ -156,8 +165,9 @@ export class StateService {
 
 	selectMostPopularRestaurants(restaurants, numberToSelect) {
 		var sorted = restaurants.sort((r1,r2) => r2.numberOfPreferences - r1.numberOfPreferences);
-		var sliced = sorted.slice(0, numberToSelect-1);
+		var sliced = sorted.slice(0, numberToSelect);
 		var mostPopular = [];
+
 		// Prune restaurants with zero preferences
 		for (let restaurant of sliced) {
 			if (restaurant.numberOfPreferences > 0) {

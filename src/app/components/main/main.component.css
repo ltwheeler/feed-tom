@@ -1,29 +1,41 @@
-.san-serif {
-	font-family: 'Open Sans Condensed', sans-serif;
+.main-container {
+	height: 100%;
+	display: flex;
+	width: 100%;	
 }
 
-.slab-serif {
-	font-family: 'Josefin Slab', serif;
+.popular-header {
+	color: #f0523e;
+	align-items: center;
+	display: flex;
+	flex-flow: column;
+	padding-bottom: 5px;
 }
 
-.preference-square {
-	flex: 0 0 20vh;
-	border: 1px solid black;
-	height: 20vh;
+.popular-square {
+	flex: 0 0 15%;
+	background-color: #f0523e;
+	color: white;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
 }
 
 .restaurant-square {
 	flex: 1 0 15%;
-	border: 1px solid black;
-	height: 20vh;
+	min-width: 150px;
+	background-color: #f2f3f4;
+	height: 20%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
+	margin-right: 3px;
+	margin-bottom: 3px;
 }
 
 .restaurant-square.liked-by-me {
@@ -37,4 +49,37 @@
 	background-image: url(/assets/images/preference-star.png);
 	background-size: cover;
 	background-position: 50% 50%;
+}
+
+.popular-column {
+	flex: 1 0 0px;
+	display: flex;
+	flex-direction: column;
+}
+
+.restaurants-column {
+	overflow-y: scroll;
+	align-content: flex-start;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex: 6 0 0px;	
+}
+
+/* Mobile tweaks */
+@media all and (device-width: 375px) and (device-height: 667px) {
+	.popular-column {
+		flex: 3 0 0px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.restaurants-column {
+		overflow-y: scroll;
+		align-content: flex-start;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		flex: 6 0 0px;	
+	}
 }

@@ -17,7 +17,7 @@ export class AppComponent {
 	preferences: Preference[] = new Array<Preference>();
 	restaurants: Restaurant[] = new Array<Restaurant>();
 	popularRestaurants: Restaurant[] = new Array<Restaurant>();
-
+	userCount: number;
 	displayPage:string = "main";
 	state:any;
 
@@ -44,6 +44,7 @@ export class AppComponent {
 				this.userName = state.userName;
 				this.tomCode = state.tomCode;
 				this.displayPage = state.displayPage;
+				this.userCount = state.state.userCount;
 			});
 		});
 

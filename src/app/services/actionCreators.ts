@@ -99,15 +99,20 @@ export class ActionCreators {
 	};
 
 	purgePreferences(restaurants:Restaurant[], preferences:Preference[], tomCode:string) {
-
 		for (let preference of preferences) {
 			this.services.deletePreference(preference.id, preference.restaurantId, tomCode);
 		}
 
 		for (let restaurant of restaurants) {
-			for (let preferenceId of restaurant.preferenceIds) {
-				this.services.deletePreference(preferenceId, restaurant.id, tomCode);
+			if (restaurant.preferenceIds) {
+				for (let preferenceId of restaurant.preferenceIds) {
+					this.services.deletePreference(preferenceId, restaurant.id, tomCode);
+				}
 			}
 		}
 	};
+
+	addRestaurant(tomCode:string, name:string) {
+		this.services.addRestaurant(tomCode, name);
+	}
 }

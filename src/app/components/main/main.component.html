@@ -1,39 +1,45 @@
 <!-- MAIN CONTENT -->
-<div class="san-serif">
-	<div style="height: 100%; display: flex; width: 100vw;">
+<div class="main-container">
 
-		<!-- LEFT COLUMN -->
-		<div style="flex: 0 0 15%; display: flex; flex-direction: column; background-color: rgba(255,255,255,.9)">
+	<!-- LEFT COLUMN -->
+	<div class="popular-column">
+		<div class="popular-header">
 			<div>
-				<button (click)="purgePreferences()">
-					Purge preferences
-				</button>
+				Participants: {{ userCount }}
 			</div>
-			<!-- LOOP over preferences -->
-			<div *ngFor="let restaurant of popularRestaurants" class="preference-square">
-				<div>
-					{{ restaurant.name }}
-				</div>
-				<div class="slab-serif" style="font-size: 1rem; color: red; font-weight: 800;">
-					{{ restaurant.numberOfPreferences }}
-				</div>
+			<button class="btn btn-gray" (click)="purgePreferences()">
+				START OVER
+			</button>
+
+		</div>
+		<!-- LOOP over preferences -->
+		<div *ngFor="let restaurant of popularRestaurants" class="popular-square">
+			<div>
+				{{ restaurant.name }}
+			</div>
+			<div style="font-size: 1rem;">
+				{{ restaurant.numberOfPreferences }}
 			</div>
 		</div>
-
-		<!-- RIGHT COLUMN -->
-		<div style="overflow-y: scroll; align-content: flex-start; display: flex; flex-direction: row; flex-wrap: wrap; flex: 0 0 85%; background-color: rgba(255,255,255,.9)">
-
-			<!-- LOOP over restaurants -->
-			<div *ngFor="let restaurant of restaurants"
-						(click)="togglePreference(restaurant)"
-						[class.liked-by-me]="restaurant.isUserPreference"
-						[class.liked-by-others]="restaurant.isOthersPreference && restaurant.isUserPreference == false"
-						class="restaurant-square">
-				<div style="font-size: 1rem;">
-					{{ restaurant.name }}
-				</div>
-			</div>
-		</div>
-
 	</div>
+
+	<!-- RIGHT COLUMN -->
+	<div class="restaurants-column">
+
+		<!-- LOOP over restaurants -->
+		<div *ngFor="let restaurant of restaurants"
+					(click)="togglePreference(restaurant)"
+					[class.liked-by-me]="restaurant.isUserPreference"
+					[class.liked-by-others]="restaurant.isOthersPreference && restaurant.isUserPreference == false"
+					class="restaurant-square">
+			<div style="font-size: 1rem;">
+				{{ restaurant.name }}
+			</div>
+		</div>
+		<div class="restaurant-square">
+			<input [(ngModel)]="newRestaurantName" placeholder="New Restaurant">
+			<button (click)="addRestaurant()" class="btn btn-green">Add</button>
+		</div>
+	</div>
+
 </div>

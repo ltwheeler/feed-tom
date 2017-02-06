@@ -44,6 +44,14 @@ export class Services {
 		ref.set(preferenceId);
 	};
 
+	addRestaurant(tomCode:string, name:string) {
+		var newRestaurantRef = database().ref().child(tomCode).child("restaurants").push();
+		var restaurantId = newRestaurantRef.key;
+		let restaurant:any = {id: restaurantId, name: name};
+
+		newRestaurantRef.set(restaurant);
+	}
+
 	deletePreference(preferenceId:string, restaurantId:string, tomCode:string) {
 		// Remove reference to preference in restaurant
 		database().ref(tomCode + "/restaurants/" + restaurantId + "/preferenceIds/" + preferenceId).remove();

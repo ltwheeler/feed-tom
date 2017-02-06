@@ -2,4 +2,13 @@
 		background-image: url(/assets/images/landing-page-background.png);
 		background-size: 100% 100%;
 		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+.login-form {
+	flex: 0 0 30%;
+	flex-flow: column;
+	align-items: center;
 }
