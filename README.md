@@ -3,4 +3,4 @@ An application that allows groups of people to vote for 'where they should eat' 
 Built with Angular2 and Firebase.
 
 ##Credits
-Graphic Design work done by Kathreen Fontecha
+Graphic design work done by [Kathreen Fontecha](http://katfont.com/)
